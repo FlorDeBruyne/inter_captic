@@ -1,5 +1,6 @@
 import cv2
 import json
+import argparse
 
 
 def metadata_afbeelding(bestandnaam):
@@ -15,7 +16,9 @@ def metadata_afbeelding(bestandnaam):
     with open(f'./pic/meatadata_{bestandnaam}.json', 'w') as fp:
         json.dump(output, fp)
     
-
-
 if __name__ == "__main__":
-    metadata_afbeelding("Screenshot 2023-10-28 at 14.32.45.png")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("bestandnaam", help="Bestandsnaam van de afbeelding")
+    args = parser.parse_args()
+
+    metadata_afbeelding(args.bestandnaam)
